@@ -95,4 +95,30 @@ public class BurgerTest {
 
         assertEquals(expectedReceipt, burger.getReceipt());
     }
+
+    // Дополнительные тесты
+
+    @Test
+    public void testCalculateDiscountWithDiscount() {
+        float price = 100.0f;
+        boolean hasDiscount = true;
+        float discountedPrice = calculateDiscount(price, hasDiscount);
+        assertEquals(90.0f, discountedPrice, 0.0f);
+    }
+
+    @Test
+    public void testCalculateDiscountWithoutDiscount() {
+        float price = 100.0f;
+        boolean hasDiscount = false;
+        float discountedPrice = calculateDiscount(price, hasDiscount);
+        assertEquals(100.0f, discountedPrice, 0.0f);
+    }
+
+    // Метод для демонстрации использования, тесты которого добавлены выше
+    private float calculateDiscount(float price, boolean hasDiscount) {
+        if (hasDiscount) {
+            return price * 0.9f; // 10% скидка
+        }
+        return price;
+    }
 }
